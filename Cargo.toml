@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 url = "2.5"
+eframe = "0.27"

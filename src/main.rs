@@ -1,11 +1,12 @@
+mod browser;
 mod networking;
+mod ui;
 
-use networking::url::ParsedUrl;
-
-fn main() {
-    // let url = "https://example.com:443/path/page.html?foo=bar#anchor";
-    let url = "https://www.google.com";
-    let parsed = ParsedUrl::parse(url).expect("Invalid URL");
-
-    println!("{:#?}", parsed);
+fn main() -> eframe::Result<()> {
+    let options = eframe::NativeOptions::default();
+    eframe::run_native(
+        "Rust Browser - URL Parser",
+        options,
+        Box::new(|_cc| Box::new(ui::window::GuiApp::default())),
+    )
 }

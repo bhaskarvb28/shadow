@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Shadow.MainPage"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- WebView Content -->
+        <WebView x:Name="BrowserView"
+                 Grid.Row="0"
+                 Source="https://www.bing.com" />
+
+        <!-- Bottom Bar -->
+         <!--#36393f -->
+        <Grid Grid.Row="1"
+              BackgroundColor="#36393f"
+              Padding="8,6"
+              ColumnDefinitions="Auto, *, Auto, Auto"
+              HeightRequest="56"
+              VerticalOptions="End">
+
+            <!-- URL Bar + Share -->
+
+            <Frame Grid.Column="1"
+                   BackgroundColor="#1c1b21"
+                   CornerRadius="6"
+                   HasShadow="False"
+                   Padding="0" 
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   Margin="6,0"
+                   HeightRequest="40">
+                
+                <!-- Optional: Controls entire bar height -->
+
+                    <Grid ColumnDefinitions="*,Auto"
+                          VerticalOptions="Center"
+                          Padding="10,4">
+                                    <!-- Move padding here if needed -->
+
+                        <Entry x:Name="UrlEntry"
+                                Placeholder="Enter URL"
+                                Text="https://www.bing.com"
+                                Keyboard="Url"
+                                ReturnType="Go"
+                                Completed="OnUrlEntered"
+                                BackgroundColor="Transparent"
+                                FontSize="13"
+                                TextColor="White"
+                                HeightRequest="30" 
+                                VerticalOptions="Center"
+                                Margin="0" />
+                    </Grid>
+            </Frame>
+
+
+            <!-- Tab Count Label -->
+            <Grid Grid.Column="2"
+                  WidthRequest="35"
+                  HeightRequest="40"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center">
+
+                <!-- Square frame with number -->
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="White"
+                       CornerRadius="6"
+                       Padding="0"
+                       HasShadow="False"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+
+                    <Label x:Name="TabCountLabel"
+                           Text="0"
+                           TextColor="White"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center" />
+                </Frame>
+
+                <!-- Tap handler -->
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTabCountTapped" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+
+
+            <!-- Menu Icon (Vertical 3 Dots) -->
+            <ImageButton Grid.Column="3"
+                         Source="menu_icon.svg"
+                         HeightRequest="24"
+                         WidthRequest="20"
+                         Clicked="OnMoreOptionsClicked"
+                         Padding="10"
+                         VerticalOptions="Center"
+                         HorizontalOptions="End" />
+        </Grid>
+    </Grid>
+</ContentPage>
